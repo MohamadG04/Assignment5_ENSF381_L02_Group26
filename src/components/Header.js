@@ -8,10 +8,10 @@ const Header = () => {
     <header>
         <div classname = "logo-name" style ={{display :'flex', justifyContent: 'space-between', padding:10}} >
             <div className="logo">
-                <img src="/images/logo.png" alt="Logo" style ={{width:50}}/>
+                <img src="/images/logo.png" alt="Logo" style ={{width:110, height: 100}}/>
             </div>
             <div class="company-name">
-                Company Name
+                Aero
             </div>
         </div>
       
