@@ -23,31 +23,52 @@ const SignupForm = ({ switchToLogin }) => {
 
   return (
     <div>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <label htmlFor="username" style={{ marginRight: '10px' }}>Username:</label>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            style={{ width: '250px', padding: '2px' }}
+          />
+        </div>
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <label htmlFor="password" style={{ marginRight: '10px' }}>Password:</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ width: '250px', padding: '2px' }}
+          />
+        </div>
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <label htmlFor="confirmPassword" style={{ marginRight: '10px' }}>Confirm Password:</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            style={{ width: '250px', padding: '2px' }}
+          />
+        </div>
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <label htmlFor="email" style={{ marginRight: '10px' }}>Email:</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ width: '250px', padding: '2px' }}
+          />
+        </div>
         <button type="submit">Signup</button>
       </form>
       <button onClick={switchToLogin}>Switch to Login</button>
