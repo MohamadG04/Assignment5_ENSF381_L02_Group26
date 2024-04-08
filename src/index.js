@@ -1,3 +1,9 @@
+// index.js
+// Name: Mohamad Ghattas
+// UCID: 30194874
+// Name: Gerard Ledoux Mendjemo Ngangom
+// UCID: 30192835
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
