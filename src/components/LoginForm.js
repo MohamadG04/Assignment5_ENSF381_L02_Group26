@@ -18,7 +18,7 @@ const LoginForm = ({ switchToSignup,setIsAuthenticated }) => {
 
     // Proceed with login logic
     try {
-      const response = await fetch("http://localhost:5001/auth-user", {
+      const response = await fetch("http://localhost:3000/auth-user", {
         method: 'Post',
         headers: {
           'Content-Type': 'application/json'

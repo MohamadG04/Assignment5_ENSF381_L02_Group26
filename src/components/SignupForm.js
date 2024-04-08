@@ -25,7 +25,7 @@ const SignupForm = ({ switchToLogin }) => {
     try{
       console.log("Signup form submitted with:", { username, password, email });
 
-      const response = await fetch("http://localhost:5001/create-user", {
+      const response = await fetch("http://localhost:3000/create-user", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
