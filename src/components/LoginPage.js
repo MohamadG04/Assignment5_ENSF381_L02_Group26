@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import Footer from './Footer';
 
-const LoginPage = () => {
+const LoginPage = ({ setIsAuthenticated }) => {
   const [showSignup, setShowSignup] = useState(false);
 
   const switchForm = () => {
@@ -18,7 +18,7 @@ const LoginPage = () => {
       {showSignup ? (
         <SignupForm switchToLogin={switchForm} />
       ) : (
-        <LoginForm switchToSignup={switchForm} />
+        <LoginForm setIsAuthenticated={setIsAuthenticated} switchToSignup={switchForm} />
       )}
       <Footer />
     </div>

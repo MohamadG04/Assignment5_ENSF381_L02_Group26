@@ -1,18 +1,50 @@
 // LoginForm.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ switchToSignup }) => {
+const LoginForm = ({ switchToSignup,setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     // Validate username and password
     if (username.trim() === '' || password.trim() === '') {
       alert('Please enter username and password');
       return;
     }
+
     // Proceed with login logic
+    try {
+      const response = await fetch("http://localhost:5001/auth-user", {
+        method: 'Post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Authentification succesful');
+        localStorage.setItem("isLoggedIn", "true");
+        setIsAuthenticated(true);
+        navigate('/products')
+
+      } else {
+        console.error('Authentification Failed:', data.message);
+        localStorage.removeItem("isLoggedIn");
+        setIsAuthenticated(false);
+    } 
+    }catch (error){
+      localStorage.removeItem("isLoggedIn");
+      setIsAuthenticated(false);
+      console.error("Authentification Failed:", error.message);
+    }
+    // API call to authenticate the user
+
   };
 
   return (

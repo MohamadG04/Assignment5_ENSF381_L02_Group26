@@ -6,9 +6,11 @@ const SignupForm = ({ switchToLogin }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); 
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+
     // Validate signup form fields
     if (username.trim() === '' || password.trim() === '' || confirmPassword.trim() === '' || email.trim() === '') {
       alert('Please fill in all fields');
@@ -18,11 +20,36 @@ const SignupForm = ({ switchToLogin }) => {
       alert('Passwords do not match');
       return;
     }
+
     // Proceed with signup logic
+    try{
+      console.log("Signup form submitted with:", { username, password, email });
+
+      const response = await fetch("http://localhost:5001/create-user", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username,password,email})
+      });
+
+      if (!response.ok){
+        const errorMessage = await response.json();
+        throw new Error(errorMessage.error);
+      }
+
+      console.log('User registered successfully!');
+      setRegistrationSuccess(true);
+      
+    }catch (error){
+      console.error('Registration Failed:', error.message);
+    }
+
   };
 
   return (
     <div>
+      {registrationSuccess && <p>User Created Succesfully, return to login.</p>}
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
         <div style={{ display: 'flex', marginBottom: '10px' }}>
